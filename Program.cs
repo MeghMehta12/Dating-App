@@ -1,5 +1,11 @@
 using API.Data;
+using API.Extensions;
+using API.Interface;
+using API.Service;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +22,13 @@ builder.Services.AddDbContext<DataContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 // Method For Adding CORS to the angular application.
-builder.Services.AddCors(); 
+builder.Services.AddCors();
+// binding the interface and services
+builder.Services.AddScoped<ITokenService,TokenService>();
+
+// Authenticating Users with JWT
+builder.Services.AddIdentityService(builder.Configuration);
+
 
 var app = builder.Build();
 
@@ -27,6 +39,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors(build => build.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+
+//Middleware should be after CORS and before MapControllers.
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseHttpsRedirection();
 

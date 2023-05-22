@@ -71,3 +71,11 @@ C:\Projects\Angular\DatingApp\API\bin\Debug\net7.0\API.runtimeconfig.json
 C:\Projects\Angular\DatingApp\API\bin\Debug\net7.0\API.pdb
 C:\Projects\Angular\DatingApp\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 C:\Projects\Angular\DatingApp\API\obj\Debug\net7.0\ref\API.dll
+C:\Projects\Angular\DatingApp\API\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Projects\Angular\DatingApp\API\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Projects\Angular\DatingApp\API\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Projects\Angular\DatingApp\API\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Projects\Angular\DatingApp\API\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Projects\Angular\DatingApp\API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Projects\Angular\DatingApp\API\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Projects\Angular\DatingApp\API\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

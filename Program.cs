@@ -38,7 +38,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors(build => build.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:56689"));
+app.UseCors(build => build.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
 //Middleware should be after CORS and before MapControllers.
 app.UseAuthentication();

@@ -1,4 +1,5 @@
 using API.Data;
+using API.Data.Repositories;
 using API.Extensions;
 using API.Interface;
 using API.MiddleWare;
@@ -27,6 +28,8 @@ builder.Services.AddDbContext<DataContext>(opt =>
 builder.Services.AddCors();
 // binding the interface and services
 builder.Services.AddScoped<ITokenService,TokenService>();
+builder.Services.AddScoped<IUserRepository,UserRepository>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Authenticating Users with JWT
 builder.Services.AddIdentityService(builder.Configuration);
@@ -53,5 +56,19 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+    var context = services.GetRequiredService<DataContext>();
+    await context.Database.MigrateAsync();
+    await Seed.SeedUsers(context);
+}
+catch(Exception ex)
+{
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex, "An Error Occured During Migration");
+}
 
 app.Run();

@@ -33,7 +33,7 @@ builder.Services.AddScoped<IUserRepository,UserRepository>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 builder.Services.AddScoped<IPhotoService, PhotoService>();
-
+builder.Services.AddScoped<LogUserActivity>();
 
 // Authenticating Users with JWT
 builder.Services.AddIdentityService(builder.Configuration);
